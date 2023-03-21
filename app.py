@@ -13,6 +13,8 @@ print("Tensorflow:", tf.__version__)
 print("Tensorflow Hub:", hub.__version__)
 
 embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-multilingual-large/3")
+print("Model loaded")
+
 app = Flask(__name__)
 swagger = Swagger(app)
 
