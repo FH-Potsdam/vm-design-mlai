@@ -24,7 +24,7 @@ swagger = Swagger(app)
 
 @app.route('/use/embed', methods=['OPTIONS'])
 @cross_origin()
-def use_embed_post():
+def use_embed_options():
   return "", 200
 
 @app.route('/use/embed', methods=['POST'])
