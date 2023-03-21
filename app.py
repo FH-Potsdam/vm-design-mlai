@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flasgger import Swagger
 from waitress import serve
 
@@ -19,9 +19,16 @@ print("Model loaded")
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 swagger = Swagger(app)
 
+@app.route('/use/embed', methods=['OPTIONS'])
+@cross_origin()
+def use_embed_post():
+  return "", 200
+
 @app.route('/use/embed', methods=['POST'])
+@cross_origin()
 def use_embed_post():
   """Returns embeddings from the universal-sentence-encoder-multilingual-large v3 for an array of strings
     ---
@@ -58,6 +65,7 @@ def use_embed_post():
 
 
 @app.route('/use/embed', methods=['GET'])
+@cross_origin()
 def use_embed_get():
   """Returns embeddings from the universal-sentence-encoder-multilingual-large v3 for a string
     ---
