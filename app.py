@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flasgger import Swagger
+from waitress import serve
 
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
@@ -85,8 +86,7 @@ def use_embed_get():
 
 if __name__ == '__main__':
   print("main")
-  from waitress import serve
-  serve(app, host="0.0.0.0", port=5050)
+  serve(app, listen='*:5050')
   print("server running")
 
 
