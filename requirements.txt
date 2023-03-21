@@ -7,6 +7,7 @@ charset-normalizer==3.0.1
 click==8.1.3
 flasgger==0.9.5
 Flask==2.2.2
+Flask-Cors==3.0.10
 flatbuffers==23.1.21
 gast==0.4.0
 google-auth==2.16.0

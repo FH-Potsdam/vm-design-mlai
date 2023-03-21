@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from flasgger import Swagger
 from waitress import serve
 
@@ -17,6 +18,7 @@ embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-multilingu
 print("Model loaded")
 
 app = Flask(__name__)
+CORS(app)
 swagger = Swagger(app)
 
 @app.route('/use/embed', methods=['POST'])
@@ -85,8 +87,8 @@ def use_embed_get():
   return jsonify(np.array(result).tolist()[0]), 200
 
 if __name__ == '__main__':
-  print("main")
+  print("server running on port 5050")
   serve(app, listen='*:5050')
-  print("server running")
+
 
 
