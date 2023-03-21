@@ -1,9 +1,16 @@
 from flask import Flask, request, jsonify
 from flasgger import Swagger
 
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+import tensorflow as tf
 import tensorflow_hub as hub
 import numpy as np
 import tensorflow_text
+
+print("Tensorflow:", tf.__version__)
+print("Tensorflow Hub:", hub.__version__)
 
 embed = hub.load("https://tfhub.dev/google/universal-sentence-encoder-multilingual-large/3")
 app = Flask(__name__)
