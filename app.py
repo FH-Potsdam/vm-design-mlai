@@ -84,6 +84,9 @@ def use_embed_get():
   return jsonify(np.array(result).tolist()[0]), 200
 
 if __name__ == '__main__':
+  print("main")
   from waitress import serve
   serve(app, host="0.0.0.0", port=5050)
   print("server running")
+
+
